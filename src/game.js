@@ -59,6 +59,30 @@ function preload(){
     //Carga de indicador de los jugadores
     this.load.image('Player1', 'assets/Sprites/player/Player1.png');
     this.load.image('Player2', 'assets/Sprites/player/Player2.png');
+
+    //Carga de power-ups y la piedra
+    this.load.image('Pepper', 'assets/Sprites/power-ups&Objects/pimiento.png');
+    this.load.image('Mushroom', 'assets/Sprites/power-ups&Objects/seta.png');
+    this.load.image('Tomato', 'assets/Sprites/power-ups&Objects/tomate.png');
+    this.load.image('Onion', 'assets/Sprites/power-ups&Objects/cebolla.png');
+
+    this.load.spritesheet('Rock', 'assets/Sprites/power-ups&Objects/piedra.png', {frameWidth: 16, frameHeight: 16});
+
+    //Carga del tile del mapa
+    this.load.image('Tunnel', 'assets/Sprites/map/tunel.png');
+    this.load.image('Tunnel_open', 'assets/Sprites/map/tunel_abierto.png');
+    this.load.image('Sky', 'assets/Sprites/map/cielo.png');
+
+    this.load.image('Ground_player1', 'assets/Sprites/map/suelo_player1.png');
+    this.load.image('Ground_player1', 'assets/Sprites/map/capa1_player1.png');
+    this.load.image('Layers_player1', 'assets/Sprites/map/capas_player1.png');
+    this.load.image('Layers_limits_player1', 'assets/Sprites/map/cambios_capa_player1.png');
+
+
+    this.load.image('Ground_player2', 'assets/Sprites/map/suelo_player2.png');
+    this.load.image('Ground_player1', 'assets/Sprites/map/capa1_player2.png');
+    this.load.image('Layers_player2', 'assets/Sprites/map/capas_player2.png');
+    this.load.image('Layers_limits_player2', 'assets/Sprites/map/cambios_capa_player2.png');
 }
 
 function create(){
