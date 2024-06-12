@@ -1,0 +1,59 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "": {
+            "scaleInDock": 8
+        },
+        "#Casilla": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "#Cielo": {
+            "scaleInDock": 5.5
+        },
+        "#Suelo_jugador1": {
+            "scaleInDock": 5.5
+        },
+        "#Suelo_jugador2": {
+            "dynamicWrapping": false,
+            "scaleInDock": 8
+        },
+        "#capa1_2_j1": {
+            "scaleInEditor": 1
+        },
+        "#capa2_3_j1": {
+            "scaleInEditor": 1
+        },
+        "#cielo": {
+            "dynamicWrapping": false
+        },
+        "#tiled_completo": {
+            "dynamicWrapping": true,
+            "scaleInEditor": 3
+        }
+    },
+    "last.imagePath": "C:/Users/David/Desktop/Portal/GRADO_DESARROLLO_DE_VIDEOJUEGOS/CURSOS/2ºCURSO/ASIGNATURAS/PVLI/DigDug/OFA_Studios/assets/Sprites/map/Capas_jug1",
+    "map.height": 30,
+    "map.tileHeight": 8,
+    "map.tileWidth": 8,
+    "map.width": 45,
+    "openFiles": [
+    ],
+    "project": "Tiled.tiled-project",
+    "recentFiles": [
+    ],
+    "tileset.embedInMap": true,
+    "tileset.margin": 0,
+    "tileset.spacing": 0,
+    "tileset.tileSize": {
+        "height": 8,
+        "width": 8
+    },
+    "tileset.type": 0
+}
