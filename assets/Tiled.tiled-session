@@ -3,12 +3,16 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "Sprites/map/maps/MapaJuego2.json",
     "expandedProjectPaths": [
+        ".",
+        "Sprites/map/maps",
+        "Sprites",
+        "Sprites/map"
     ],
     "fileStates": {
         "": {
-            "scaleInDock": 8
+            "scaleInDock": 1
         },
         "#Casilla": {
             "dynamicWrapping": true,
@@ -24,36 +28,433 @@
             "dynamicWrapping": false,
             "scaleInDock": 8
         },
+        "#cambio_capa1_1_j1": {
+            "scaleInEditor": 1
+        },
+        "#cambio_capa1_2_j1": {
+            "scaleInEditor": 1
+        },
+        "#cambio_capa1_3_j1": {
+            "scaleInEditor": 1
+        },
+        "#cambio_capa2_1_j1": {
+            "scaleInEditor": 1
+        },
+        "#cambio_capa2_2_j1": {
+            "scaleInEditor": 1
+        },
+        "#cambio_capa2_3_j1": {
+            "scaleInEditor": 1
+        },
+        "#cambio_capa3_1_j1": {
+            "scaleInEditor": 1
+        },
+        "#cambio_capa3_2_j1": {
+            "scaleInEditor": 1
+        },
+        "#cambio_capa3_3_j1": {
+            "scaleInEditor": 1
+        },
+        "#capa1_1_j1": {
+            "scaleInEditor": 1
+        },
         "#capa1_2_j1": {
+            "scaleInEditor": 1
+        },
+        "#capa1_3_j1": {
+            "scaleInEditor": 1
+        },
+        "#capa1_4_j1": {
+            "scaleInEditor": 1
+        },
+        "#capa2_1_j1": {
+            "scaleInEditor": 1
+        },
+        "#capa2_2_j1": {
             "scaleInEditor": 1
         },
         "#capa2_3_j1": {
             "scaleInEditor": 1
         },
+        "#capa2_4_j1": {
+            "scaleInEditor": 1
+        },
+        "#capa3_1_j1": {
+            "scaleInEditor": 1
+        },
+        "#capa3_2_j1": {
+            "scaleInEditor": 1
+        },
+        "#capa3_3_j1": {
+            "scaleInEditor": 1
+        },
+        "#capa3_4_j1": {
+            "scaleInEditor": 1
+        },
+        "#capa4_1_j1": {
+            "scaleInEditor": 1
+        },
+        "#capa4_2_j1": {
+            "scaleInEditor": 1
+        },
+        "#capa4_3_j1": {
+            "scaleInEditor": 1
+        },
+        "#capa4_4_j1": {
+            "scaleInEditor": 1
+        },
+        "#capa4_4_j2": {
+            "scaleInEditor": 1
+        },
         "#cielo": {
+            "dynamicWrapping": false
+        },
+        "#cielo_suelo_primeracapa": {
+            "scaleInEditor": 1
+        },
+        "#subsuelo": {
             "dynamicWrapping": false
         },
         "#tiled_completo": {
             "dynamicWrapping": true,
             "scaleInEditor": 3
+        },
+        "#tunel": {
+            "dynamicWrapping": false
+        },
+        "Sprites/map/maps/Mapa.tmx#cambio_capa1_1_j1": {
+            "scaleInEditor": 23
+        },
+        "Sprites/map/maps/Mapa.tmx#cambio_capa1_2_j1": {
+            "scaleInEditor": 1
+        },
+        "Sprites/map/maps/Mapa.tmx#cambio_capa1_3_j1": {
+            "scaleInEditor": 1
+        },
+        "Sprites/map/maps/Mapa.tmx#cambio_capa2_1_j1": {
+            "scaleInEditor": 1
+        },
+        "Sprites/map/maps/Mapa.tmx#cambio_capa2_2_j1": {
+            "scaleInEditor": 1
+        },
+        "Sprites/map/maps/Mapa.tmx#cambio_capa2_3_j1": {
+            "scaleInEditor": 1
+        },
+        "Sprites/map/maps/Mapa.tmx#cambio_capa3_1_j1": {
+            "scaleInEditor": 1
+        },
+        "Sprites/map/maps/Mapa.tmx#cambio_capa3_2_j1": {
+            "scaleInEditor": 1
+        },
+        "Sprites/map/maps/Mapa.tmx#cambio_capa3_3_j1": {
+            "scaleInEditor": 1
+        },
+        "Sprites/map/maps/Mapa.tmx#capa1_1_j1": {
+            "scaleInEditor": 1
+        },
+        "Sprites/map/maps/Mapa.tmx#capa1_2_j1": {
+            "scaleInEditor": 1
+        },
+        "Sprites/map/maps/Mapa.tmx#capa1_3_j1": {
+            "scaleInEditor": 1
+        },
+        "Sprites/map/maps/Mapa.tmx#capa1_4_j1": {
+            "scaleInEditor": 1
+        },
+        "Sprites/map/maps/Mapa.tmx#capa2_1_j1": {
+            "scaleInEditor": 1
+        },
+        "Sprites/map/maps/Mapa.tmx#capa2_2_j1": {
+            "scaleInEditor": 1
+        },
+        "Sprites/map/maps/Mapa.tmx#capa2_3_j1": {
+            "scaleInEditor": 1
+        },
+        "Sprites/map/maps/Mapa.tmx#capa2_4_j1": {
+            "scaleInEditor": 1
+        },
+        "Sprites/map/maps/Mapa.tmx#capa3_1_j1": {
+            "scaleInEditor": 1
+        },
+        "Sprites/map/maps/Mapa.tmx#capa3_2_j1": {
+            "scaleInEditor": 1
+        },
+        "Sprites/map/maps/Mapa.tmx#capa3_3_j1": {
+            "scaleInEditor": 1
+        },
+        "Sprites/map/maps/Mapa.tmx#capa3_4_j1": {
+            "scaleInEditor": 1
+        },
+        "Sprites/map/maps/Mapa.tmx#capa4_1_j1": {
+            "scaleInEditor": 1
+        },
+        "Sprites/map/maps/Mapa.tmx#capa4_2_j1": {
+            "scaleInEditor": 1
+        },
+        "Sprites/map/maps/Mapa.tmx#capa4_3_j1": {
+            "scaleInEditor": 1
+        },
+        "Sprites/map/maps/Mapa.tmx#capa4_4_j1": {
+            "scaleInEditor": 1
+        },
+        "Sprites/map/maps/MapaJuego.json": {
+            "scale": 2,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 186.25,
+                "y": 124
+            }
+        },
+        "Sprites/map/maps/MapaJuego.json#cambio_capa1_1_j1": {
+            "scaleInDock": 23
+        },
+        "Sprites/map/maps/MapaJuego.json#cambio_capa1_2_j1": {
+            "scaleInDock": 23
+        },
+        "Sprites/map/maps/MapaJuego.json#cambio_capa1_3_j1": {
+            "scaleInDock": 23
+        },
+        "Sprites/map/maps/MapaJuego.json#cambio_capa2_1_j1": {
+            "scaleInDock": 23
+        },
+        "Sprites/map/maps/MapaJuego.json#cambio_capa2_2_j1": {
+            "scaleInDock": 23
+        },
+        "Sprites/map/maps/MapaJuego.json#cambio_capa2_3_j1": {
+            "scaleInDock": 23
+        },
+        "Sprites/map/maps/MapaJuego.json#cambio_capa3_1_j1": {
+            "scaleInDock": 23
+        },
+        "Sprites/map/maps/MapaJuego.json#cambio_capa3_2_j1": {
+            "scaleInDock": 23
+        },
+        "Sprites/map/maps/MapaJuego.json#cambio_capa3_3_j1": {
+            "scaleInDock": 23
+        },
+        "Sprites/map/maps/MapaJuego.json#capa1_1_j1": {
+            "scaleInDock": 23
+        },
+        "Sprites/map/maps/MapaJuego.json#capa1_2_j1": {
+            "scaleInDock": 23
+        },
+        "Sprites/map/maps/MapaJuego.json#capa1_3_j1": {
+            "scaleInDock": 23
+        },
+        "Sprites/map/maps/MapaJuego.json#capa1_4_j1": {
+            "scaleInDock": 23
+        },
+        "Sprites/map/maps/MapaJuego.json#capa2_1_j1": {
+            "scaleInDock": 23
+        },
+        "Sprites/map/maps/MapaJuego.json#capa2_2_j1": {
+            "scaleInDock": 23
+        },
+        "Sprites/map/maps/MapaJuego.json#capa2_3_j1": {
+            "scaleInDock": 23
+        },
+        "Sprites/map/maps/MapaJuego.json#capa2_4_j1": {
+            "scaleInDock": 23
+        },
+        "Sprites/map/maps/MapaJuego.json#capa3_1_j1": {
+            "scaleInDock": 23
+        },
+        "Sprites/map/maps/MapaJuego.json#capa3_2_j1": {
+            "scaleInDock": 23
+        },
+        "Sprites/map/maps/MapaJuego.json#capa3_3_j1": {
+            "scaleInDock": 23
+        },
+        "Sprites/map/maps/MapaJuego.json#capa3_4_j1": {
+            "scaleInDock": 23
+        },
+        "Sprites/map/maps/MapaJuego.json#capa4_1_j1": {
+            "scaleInDock": 23
+        },
+        "Sprites/map/maps/MapaJuego.json#capa4_2_j1": {
+            "scaleInDock": 23
+        },
+        "Sprites/map/maps/MapaJuego.json#capa4_3_j1": {
+            "scaleInDock": 23
+        },
+        "Sprites/map/maps/MapaJuego.json#capa4_4_j1": {
+            "scaleInDock": 23
+        },
+        "Sprites/map/maps/MapaJuego.json#cielo": {
+            "scaleInDock": 23
+        },
+        "Sprites/map/maps/MapaJuego.json#suelo": {
+            "scaleInDock": 1
+        },
+        "Sprites/map/maps/MapaJuego.json#tiled": {
+            "scaleInDock": 5.5
+        },
+        "Sprites/map/maps/MapaJuego.json#tiled_recortado": {
+            "scaleInDock": 3
+        },
+        "Sprites/map/maps/MapaJuego.json#tunel1": {
+            "scaleInDock": 1
+        },
+        "Sprites/map/maps/MapaJuego.json#tunel10": {
+            "scaleInDock": 1
+        },
+        "Sprites/map/maps/MapaJuego.json#tunel2": {
+            "scaleInDock": 1
+        },
+        "Sprites/map/maps/MapaJuego.json#tunel3": {
+            "scaleInDock": 1
+        },
+        "Sprites/map/maps/MapaJuego.json#tunel4": {
+            "scaleInDock": 1
+        },
+        "Sprites/map/maps/MapaJuego.json#tunel5": {
+            "scaleInDock": 1
+        },
+        "Sprites/map/maps/MapaJuego.json#tunel6": {
+            "scaleInDock": 1
+        },
+        "Sprites/map/maps/MapaJuego.json#tunel7": {
+            "scaleInDock": 1
+        },
+        "Sprites/map/maps/MapaJuego.json#tunel8": {
+            "scaleInDock": 1
+        },
+        "Sprites/map/maps/MapaJuego.json#tunel9": {
+            "scaleInDock": 1
+        },
+        "Sprites/map/maps/MapaJuego.json#tunel_abierto": {
+            "scaleInDock": 1
+        },
+        "Sprites/map/maps/MapaJuego2..tmx": {
+            "scale": 1.484375,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 244.5473684210526,
+                "y": 138.77894736842103
+            }
+        },
+        "Sprites/map/maps/MapaJuego2..tmx#cambio_capa": {
+            "scaleInEditor": 1
+        },
+        "Sprites/map/maps/MapaJuego2..tmx#cielo_suelo_primeracapa": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Sprites/map/maps/MapaJuego2..tmx#subsuelo": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "Sprites/map/maps/MapaJuego2..tmx#tunel1": {
+            "scaleInDock": 1
+        },
+        "Sprites/map/maps/MapaJuego2..tmx#tunel10": {
+            "scaleInDock": 1
+        },
+        "Sprites/map/maps/MapaJuego2..tmx#tunel2": {
+            "scaleInDock": 1
+        },
+        "Sprites/map/maps/MapaJuego2..tmx#tunel3": {
+            "scaleInDock": 1
+        },
+        "Sprites/map/maps/MapaJuego2..tmx#tunel4": {
+            "scaleInDock": 1
+        },
+        "Sprites/map/maps/MapaJuego2..tmx#tunel5": {
+            "scaleInDock": 1
+        },
+        "Sprites/map/maps/MapaJuego2..tmx#tunel6": {
+            "scaleInDock": 1
+        },
+        "Sprites/map/maps/MapaJuego2..tmx#tunel7": {
+            "scaleInDock": 1
+        },
+        "Sprites/map/maps/MapaJuego2..tmx#tunel8": {
+            "scaleInDock": 1
+        },
+        "Sprites/map/maps/MapaJuego2..tmx#tunel9": {
+            "scaleInDock": 1
+        },
+        "Sprites/map/maps/MapaJuego2..tmx#tunel_abierto": {
+            "scaleInDock": 1
+        },
+        "Sprites/map/maps/MapaJuego2.json": {
+            "scale": 2,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 181.5,
+                "y": 131
+            }
+        },
+        "Sprites/map/maps/MapaJuego2.json#cambio_capa": {
+            "scaleInDock": 3,
+            "scaleInEditor": 1
+        },
+        "Sprites/map/maps/MapaJuego2.json#cielo_suelo_primeracapa": {
+            "scaleInDock": 8
+        },
+        "Sprites/map/maps/MapaJuego2.json#subsuelo": {
+            "scaleInDock": 3,
+            "scaleInEditor": 1
+        },
+        "Sprites/map/maps/MapaJuego2.json#tunel1": {
+            "scaleInDock": 1
+        },
+        "Sprites/map/maps/MapaJuego2.json#tunel10": {
+            "scaleInDock": 1
+        },
+        "Sprites/map/maps/MapaJuego2.json#tunel2": {
+            "scaleInDock": 1
+        },
+        "Sprites/map/maps/MapaJuego2.json#tunel3": {
+            "scaleInDock": 1
+        },
+        "Sprites/map/maps/MapaJuego2.json#tunel4": {
+            "scaleInDock": 1
+        },
+        "Sprites/map/maps/MapaJuego2.json#tunel5": {
+            "scaleInDock": 1
+        },
+        "Sprites/map/maps/MapaJuego2.json#tunel6": {
+            "scaleInDock": 1
+        },
+        "Sprites/map/maps/MapaJuego2.json#tunel7": {
+            "scaleInDock": 1
+        },
+        "Sprites/map/maps/MapaJuego2.json#tunel8": {
+            "scaleInDock": 1
+        },
+        "Sprites/map/maps/MapaJuego2.json#tunel9": {
+            "scaleInDock": 1
+        },
+        "Sprites/map/maps/MapaJuego2.json#tunel_abierto": {
+            "scaleInDock": 1
         }
     },
-    "last.imagePath": "C:/Users/David/Desktop/Portal/GRADO_DESARROLLO_DE_VIDEOJUEGOS/CURSOS/2ºCURSO/ASIGNATURAS/PVLI/DigDug/OFA_Studios/assets/Sprites/map/Capas_jug1",
+    "last.exportedFilePath": "C:/Users/David/Desktop/Portal/GRADO_DESARROLLO_DE_VIDEOJUEGOS/CURSOS/2ºCURSO/ASIGNATURAS/PVLI/DigDug/OFA_Studios/assets/Sprites/map/maps",
+    "last.imagePath": "C:/Users/David/Desktop/Portal/GRADO_DESARROLLO_DE_VIDEOJUEGOS/CURSOS/2ºCURSO/ASIGNATURAS/PVLI/DigDug/OFA_Studios/assets/Sprites/map/Capas",
     "map.height": 30,
+    "map.lastUsedExportFilter": "Todos los archivos (*)",
+    "map.lastUsedFormat": "json",
     "map.tileHeight": 8,
     "map.tileWidth": 8,
-    "map.width": 45,
+    "map.width": 46,
     "openFiles": [
+        "Sprites/map/maps/MapaJuego2.json"
     ],
     "project": "Tiled.tiled-project",
+    "property.type": "bool",
     "recentFiles": [
+        "Sprites/map/maps/MapaJuego2.json",
+        "Sprites/map/maps/MapaJuego.json"
     ],
     "tileset.embedInMap": true,
     "tileset.margin": 0,
     "tileset.spacing": 0,
     "tileset.tileSize": {
-        "height": 8,
-        "width": 8
+        "height": 16,
+        "width": 16
     },
-    "tileset.type": 0
+    "tileset.transparentColor": "#ffffff",
+    "tileset.type": 0,
+    "tileset.useTransparentColor": true
 }
