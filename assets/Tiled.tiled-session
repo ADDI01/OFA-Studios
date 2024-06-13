@@ -378,11 +378,11 @@
             "scaleInDock": 1
         },
         "Sprites/map/maps/MapaJuego2.json": {
-            "scale": 2,
+            "scale": 1.5,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 181.5,
-                "y": 131
+                "x": 181.33333333333331,
+                "y": 121.33333333333334
             }
         },
         "Sprites/map/maps/MapaJuego2.json#cambio_capa": {

@@ -1,12 +1,17 @@
 
 let config = {
     type: Phaser.WEBGL,
-    width: 1000,
-    height: 800,
+    width: 700,
+    height: 500,
+    scale: {
+        mode: Phaser.Scale.FIT,
+        autoCenter: Phaser.Scale.CENTER_BOTH
+    },
+    pixelArt: true,
     scene: {
         preload: preload,
         create: create
-    }
+    },
 };
 
 new Phaser.Game(config);
@@ -100,8 +105,8 @@ function create(){
     });
 
     //Declaramos los tilesets
-    const tilesetLayers = this.map.addTilesetImage('subsuelo', 'Sky_Ground_FirstLayer');
-    const tilesetSkyGroundFirstlayer = this.map.addTilesetImage('cielo_suelo_primeracapa', 'Underground');
+    const tilesetLayers = this.map.addTilesetImage('subsuelo', 'Underground');
+    const tilesetSkyGroundFirstlayer = this.map.addTilesetImage('cielo_suelo_primeracapa', 'Sky_Ground_FirstLayer');
 
     const tilesetTunnel1 = this.map.addTilesetImage('tunel1', 'Tunnel1');
     const tilesetTunnel2 = this.map.addTilesetImage('tunel2', 'Tunnel2');
@@ -116,7 +121,7 @@ function create(){
     const tilesetTunnelOpen = this.map.addTilesetImage('tunel_abierto', 'Tunnel_open');
 
     //Creamos las layers
-    this.Mapa = this.map.createLayer('Mapa2', [tilesetLayers, tilesetSkyGroundFirstlayer]);
+    this.Mapa = this.map.createLayer('Mapa', [tilesetLayers, tilesetSkyGroundFirstlayer]);
 
     this.TunnelLayer = this.map.createLayer('Tunel', 
         [tilesetTunnel1, tilesetTunnel2, tilesetTunnel3, tilesetTunnel4, tilesetTunnel5, tilesetTunnel6, tilesetTunnel7,
