@@ -21,11 +21,16 @@ export default class Enemigo extends Phaser.GameObjects.Sprite {
         this.body.setCollideWorldBounds();
 
         const direction = {
-            Derecha: 0, 
-            Arriba: 1,
-            Izquierda: 2,
-            Abajo: 3
+            Derecha: 0,
+            Izquierda: 1
         }
         this.direccion = direccion;
+
+        //Para animaciones
+        this.parado = true;
+        this.persiguiendo = false;
+        this.huyendo = false;
+        this.inflado = false;
+
     }
 }

@@ -15,7 +15,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
         this.score = 0;
         this.maxLifes = 3;
         this.lifes = this.maxLifes;
-        this.originalSpeed = 20;
+        this.originalSpeed = 30;
         this.speed = this.originalSpeed;
         this.keys = keys;
        // this.keys = this.scene.input.keyboard.addKeys('T');
@@ -67,192 +67,6 @@ export default class Player extends Phaser.GameObjects.Sprite {
         this.muerto = false;
 
         //this.body.setSize(60, 40);
-
-        //CREACIÓN DE ANIMACIONES
-        //Movimiento
-        this.scene.anims.create({
-            key: 'player_mov_right',
-            frames: scene.anims.generateFrameNumbers('DigDug_mov', { start: 0, end: 1 }),
-            frameRate: 12,
-            repeat: -1
-        })
-        this.scene.anims.create({
-            key: 'player_mov_up',
-            frames: scene.anims.generateFrameNumbers('DigDug_mov', { start: 2, end: 3 }),
-            frameRate: 12,
-            repeat: -1
-        })
-        this.scene.anims.create({
-            key: 'player_mov_left',
-            frames: scene.anims.generateFrameNumbers('DigDug_mov', { start: 4, end: 5 }),
-            frameRate: 12,
-            repeat: -1
-        })
-        this.scene.anims.create({
-            key: 'player_mov_down',
-            frames: scene.anims.generateFrameNumbers('DigDug_mov', { start: 6, end: 7 }),
-            frameRate: 12,
-            repeat: -1
-        })
-
-        this.scene.anims.create({
-            key: 'player_idle_right',
-            frames: scene.anims.generateFrameNumbers('DigDug_mov', { start: 1, end: 1 }),
-            frameRate: 6,
-            repeat: -1
-        })
-
-        this.scene.anims.create({
-            key: 'player_idle_up',
-            frames: scene.anims.generateFrameNumbers('DigDug_mov', { start: 3, end: 3 }),
-            frameRate: 6,
-            repeat: -1
-        })
-
-        this.scene.anims.create({
-            key: 'player_idle_left',
-            frames: scene.anims.generateFrameNumbers('DigDug_mov', { start: 5, end: 5 }),
-            frameRate: 6,
-            repeat: -1
-        })
-
-        this.scene.anims.create({
-            key: 'player_idle_down',
-            frames: scene.anims.generateFrameNumbers('DigDug_mov', { start: 7, end: 7 }),
-            frameRate: 6,
-            repeat: -1
-        })
-
-
-        //Cavar
-        this.scene.anims.create({
-            key: 'player_digging_right',
-            frames: scene.anims.generateFrameNumbers('DigDug_dig', {start: 0, end: 1}),
-            frameRate: 12,
-            repeat: -1
-        });
-        this.scene.anims.create({
-            key: 'player_digging_up',
-            frames: scene.anims.generateFrameNumbers('DigDug_dig', {start: 2, end: 3}),
-            frameRate: 12,
-            repeat: -1
-        });
-        this.scene.anims.create({
-            key: 'player_digging_left',
-            frames: scene.anims.generateFrameNumbers('DigDug_dig', {start: 4, end: 5}),
-            frameRate: 12,
-            repeat: -1
-        });
-        this.scene.anims.create({
-            key: 'player_digging_down',
-            frames: scene.anims.generateFrameNumbers('DigDug_dig', {start: 6, end: 7}),
-            frameRate: 12,
-            repeat: -1
-        });
-
-        //Lanzar inflador
-        this.scene.anims.create({
-            key: 'player_throwing_pump_right',
-            frames: scene.anims.generateFrameNumbers('DigDug_throw_pump', {start: 0, end: 0}),
-            frameRate: 12,
-            repeat: -1
-        });
-        this.scene.anims.create({
-            key: 'player_throwing_pump_up',
-            frames: scene.anims.generateFrameNumbers('DigDug_throw_pump', {start: 1, end: 1}),
-            frameRate: 12,
-            repeat: -1
-        });
-        this.scene.anims.create({
-            key: 'player_throwing_pump_left',
-            frames: scene.anims.generateFrameNumbers('DigDug_throw_pump', {start: 2, end: 2}),
-            frameRate: 12,
-            repeat: -1
-        });
-        this.scene.anims.create({
-            key: 'player_throwing_pump_down',
-            frames: scene.anims.generateFrameNumbers('DigDug_throw_pump', {start: 3, end: 3}),
-            frameRate: 12,
-            repeat: -1
-        });
-
-        //Inflar
-        this.scene.anims.create({
-            key: 'player_inflate_right',
-            frames: scene.anims.generateFrameNumbers('DigDug_inflate', {start: 0, end: 1}),
-            frameRate: 12,
-            repeat: -1
-        });
-        this.scene.anims.create({
-            key: 'player_inflate_up',
-            frames: scene.anims.generateFrameNumbers('DigDug_inflate', {start: 2, end: 3}),
-            frameRate: 12,
-            repeat: -1
-        });
-        this.scene.anims.create({
-            key: 'player_inflate_left',
-            frames: scene.anims.generateFrameNumbers('DigDug_inflate', {start: 4, end: 5}),
-            frameRate: 12,
-            repeat: -1
-        });
-        this.scene.anims.create({
-            key: 'player_inflate_down',
-            frames: scene.anims.generateFrameNumbers('DigDug_inflate', {start: 6, end: 7}),
-            frameRate: 12,
-            repeat: -1
-        });
-        
-        //Aplastado
-        this.scene.anims.create({
-            key: 'player_smashed_right',
-            frames: scene.anims.generateFrameNumbers('DigDug_smashed', {start: 0, end: 1}),
-            frameRate: 12,
-            repeat: -1
-        });
-        this.scene.anims.create({
-            key: 'player_smashed_up',
-            frames: scene.anims.generateFrameNumbers('DigDug_smashed', {start: 2, end: 3}),
-            frameRate: 12,
-            repeat: -1
-        });
-        this.scene.anims.create({
-            key: 'player_smashed_left',
-            frames: scene.anims.generateFrameNumbers('DigDug_smashed', {start: 4, end: 5}),
-            frameRate: 12,
-            repeat: -1
-        });
-        this.scene.anims.create({
-            key: 'player_smashed_down',
-            frames: scene.anims.generateFrameNumbers('DigDug_smashed', {start: 6, end: 7}),
-            frameRate: 12,
-            repeat: -1
-        });
-        
-        //Muerte
-        this.scene.anims.create({
-            key: 'player_dead_right',
-            frames: scene.anims.generateFrameNumbers('DigDug_dead', {start: 0, end: 1}),
-            frameRate: 12,
-            repeat: -1
-        });
-        this.scene.anims.create({
-            key: 'player_dead_up',
-            frames: scene.anims.generateFrameNumbers('DigDug_dead', {start: 2, end: 3}),
-            frameRate: 12,
-            repeat: -1
-        });
-        this.scene.anims.create({
-            key: 'player_dead_left',
-            frames: scene.anims.generateFrameNumbers('DigDug_dead', {start: 4, end: 5}),
-            frameRate: 12,
-            repeat: -1
-        });
-        this.scene.anims.create({
-            key: 'player_dead_down',
-            frames: scene.anims.generateFrameNumbers('DigDug_dead', {start: 6, end: 7}),
-            frameRate: 12,
-            repeat: -1
-        });
 
         //Animación inicio
         if(this.direccion == 0) this.play('player_idle_right');
@@ -329,7 +143,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
             
         }
         else{
-            switch(this.direction){
+            switch(this.direccion){
                 case 0: 
                 this.play('player_mov_right');
                 break;
@@ -348,7 +162,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
 
     setThrowPumpAnim(){
         this.lanzandoInflador = true;
-        switch(direction){
+        switch(direccion){
             case 0: 
             this.play('player_throwing_pump_right');
             break;
@@ -366,7 +180,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
 
     setInflateAnim(){
         this.inflando = true;
-        switch(direction){
+        switch(direccion){
             case 0: 
             this.play('player_inflate_right');
             break;
@@ -384,7 +198,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
 
     setInflateAnim(){
         this.excavando = true;
-        switch(direction){
+        switch(direccion){
             case 0: 
             this.play('player_digging_right');
             break;
@@ -402,7 +216,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
 
     setPlayerSmashedAnim(){
         this.aplastado = true;
-        switch(direction){
+        switch(direccion){
             case 0: 
             this.play('player_smashed_right');
             break;
@@ -420,7 +234,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
 
     setPlayerDmgAnim() {
         this.dañado = true;
-        switch(direction){
+        switch(direccion){
             case 0: 
             this.play('player_dead_right');
             break;
@@ -503,43 +317,47 @@ export default class Player extends Phaser.GameObjects.Sprite {
             //MOVIMIENTO
             else if (this.keys.D.isDown) {
                 this.direccion = 0;
+                this.parado = false;
+                if(!this.dañado) this.setMovAnim();
                 this.body.setVelocityX(this.speed);
     
                 //Reanudar musica juego
                 //this.jump.play();
-                if(!this.dañado) this.setMovAnim();
             }
             else if (this.keys.W.isDown) {
                 this.direccion = 1;
+                this.parado = false;
+                if(!this.dañado) this.setMovAnim();
                 this.body.setVelocityY(-this.speed);
     
                 //Reanudar musica juego
                 //this.jump.play();
-                if(!this.dañado) this.setMovAnim();
             }
             else if (this.keys.A.isDown) {
                 this.direccion = 2;
+                this.parado = false;
+                if(!this.dañado) this.setMovAnim();
                 this.body.setVelocityX(-this.speed);
     
                 //Reanudar musica juego
                 //this.jump.play();
-                if(!this.dañado) this.setMovAnim();
             }
             else if (this.keys.S.isDown) {
                 this.direccion = 3;
+                this.parado = false;
+                if(!this.dañado) this.setMovAnim();
                 this.body.setVelocityY(this.speed);
     
                 //Reanudar musica juego
                 //this.jump.play();
-                if(!this.dañado) this.setMovAnim();
             }
             else {
-                this.body.setVelocityX(0);
-                this.body.setVelocityY(0);
                 if(!this.parado && !this.dañado){
                     this.parado = true;
                     this.setMovAnim();
                 }
+                this.body.setVelocityX(0);
+                this.body.setVelocityY(0);
             }
         }
         else if(this.id == "P2"){
@@ -558,43 +376,47 @@ export default class Player extends Phaser.GameObjects.Sprite {
             //MOVIMIENTO
             if (this.keys.RIGHT.isDown) {
                 this.direccion = 0;
+                this.parado = false;
+                if(!this.dañado) this.setMovAnim();
                 this.body.setVelocityX(this.speed);
     
                 //Reanudar musica juego
                 //this.jump.play();
-                if(!this.dañado) this.setMovAnim();
             }
             else if (this.keys.UP.isDown) {
                 this.direccion = 1;
+                this.parado = false;
+                if(!this.dañado) this.setMovAnim();
                 this.body.setVelocityY(-this.speed);
     
                 //Reanudar musica juego
                 //this.jump.play();
-                if(!this.dañado) this.setMovAnim();
             }
             else if (this.keys.LEFT.isDown) {
                 this.direccion = 2;
+                this.parado = false;
+                if(!this.dañado) this.setMovAnim();
                 this.body.setVelocityX(-this.speed);
     
                 //Reanudar musica juego
                 //this.jump.play();
-                if(!this.dañado) this.setMovAnim();
             }
             else if (this.keys.DOWN.isDown) {
                 this.direccion = 3;
+                this.parado = false;
+                if(!this.dañado) this.setMovAnim();
                 this.body.setVelocityY(this.speed);
     
                 //Reanudar musica juego
                 //this.jump.play();
-                if(!this.dañado) this.setMovAnim();
             }
             else {
-                this.body.setVelocityX(0);
-                this.body.setVelocityY(0);
                 if(!this.parado && !this.dañado){
                     this.parado = true;
                     this.setMovAnim();
                 }
+                this.body.setVelocityX(0);
+                this.body.setVelocityY(0);
             }
         }
 

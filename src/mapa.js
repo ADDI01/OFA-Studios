@@ -65,7 +65,7 @@ export default class Mapa extends Phaser.Scene {
         this.Enemigos = this.add.group();
         this.FygarLayer = this.map.getObjectLayer('Fygar');
         this.FygarLayer.objects.forEach((objeto) => {
-            this.fygar = new Fygar(this, objeto.x, objeto.y, 2);
+            this.fygar = new Fygar(this, objeto.x, objeto.y, 1);
             this.Enemigos.add(this.fygar);
         });
         this.PookaLayer = this.map.getObjectLayer('Pooka');

@@ -16,11 +16,7 @@ let config = {
     pixelArt: true,
     scene: [Boot, MenuInicio, Mapa/*, PauseMenu, GameOver, GameWin*/],
     physics: {
-        default: 'arcade',
-        arcade: {
-            gravity: {y: 300},
-            debug: false
-        }
+        default: 'arcade'
     }
 };
 
