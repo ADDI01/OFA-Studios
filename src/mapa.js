@@ -42,70 +42,86 @@ export default class Mapa extends Phaser.Scene {
         const tilesetTunnelEmpty = this.map.addTilesetImage('tunel_vacio', 'Tunnel_empty');
     
         //Creamos las layers
-        this.Mapa = this.map.createLayer('Mapa2', [tilesetLayers, tilesetSkyGroundFirstlayer]);
+        this.MapaLayer = this.map.createLayer('Mapa2', [tilesetLayers, tilesetSkyGroundFirstlayer]);
     
         this.TunnelLayer = this.map.createLayer('Tunel', 
             [tilesetTunnel1, tilesetTunnel2, tilesetTunnel3, tilesetTunnel4, tilesetTunnel5, tilesetTunnel6, tilesetTunnel7,
                 tilesetTunnel8, tilesetTunnelEmpty]);
     
         //Layer para cada player
+        this.Players = this.add.group();
         this.Player1Layer = this.map.getObjectLayer('Player1');
         this.Player1Layer.objects.forEach((objeto) => {
-            new Player(this, objeto.x, objeto.y, "P1", true);
+            this.p1 = new Player(this, objeto.x, objeto.y, 'idle_p1', "P1", this.input.keyboard.addKeys('W,S,A,D,SPACE,T'), 0);
+            this.Players.add(this.p1);
         })
         this.Player2Layer = this.map.getObjectLayer('Player2');
         this.Player2Layer.objects.forEach((objeto) => {
-            new Player(this, objeto.x, objeto.y, "P2", false);
+            this.p2 = new Player(this, objeto.x, objeto.y, 'idle_p2', "P2", this.input.keyboard.addKeys('UP,LEFT,DOWN,RIGHT,M,T'), 2);
+            this.Players.add(this.p2);
         })
 
         //Layers para enemigos
+        this.Enemigos = this.add.group();
         this.FygarLayer = this.map.getObjectLayer('Fygar');
         this.FygarLayer.objects.forEach((objeto) => {
-            new Fygar(this, objeto.x, objeto.y);
+            this.fygar = new Fygar(this, objeto.x, objeto.y, 2);
+            this.Enemigos.add(this.fygar);
         });
         this.PookaLayer = this.map.getObjectLayer('Pooka');
         this.PookaLayer.objects.forEach((objeto) => {
-            new Pooka(this, objeto.x, objeto.y);
+            this.pooka = new Pooka(this, objeto.x, objeto.y, 0);    
+            this.Enemigos.add(this.pooka);
         });
 
-        //Layer de los obstaculos
+        /*//Layer de los obstaculos
+        this.Obstaculos = this.add.group();
         this.RockLayer = this.map.getObjectLayer('Rock');
         this.RockLayer.objects.forEach((objeto => {
-            new Rock(this, objeto.x, objeto.y);
-        }));
+            this.rock = new Rock(this, objeto.x, objeto.y);
+            this.Obstaculos.add(this.rock);
+        }));*/
 
+        /*//Layer de los power-ups
+        this.Powerups = this.add.group();
+        this.PowerupLayer = this.map.getObjectLayer('Powerup');
+        this.PowerupLayer.objects.forEach((objeto => {
+            this.powerup = new Powerup(this, objeto.x, objeto.y);
+            this.Powerups.add(this.powerup);
+        }));*/
+        
         //Añadimos colisiones al mapa y setteamos quienes pueden chocar contra el mapa
-        //this.mapa.setCollisionByProperty({colision: true});
+        this.MapaLayer.setCollisionByProperty({colision: true});
     
-            //TODO: hacer los groups y darles la colision contra el mapa
-            //this.physics.add.collider(Enemigos, mapa);
-            //this.physics.add.collider(Player, mapa);
-            //this.physics.add.collider(Power-ups, mapa);
-            //this.physics.add.collider(Obstacules, mapa);
+        //TODO: hacer los groups y darles la colision contra el mapa
+        this.physics.add.collider(this.Enemigos, this.MapaLayer);
+        this.physics.add.collider(this.Players, this.MapaLayer);
+        //this.physics.add.collider(Power-ups, mapa);
+        //this.physics.add.collider(Obstacules, mapa);
     }
 
     //MIRAR
     update(time){
-        if(this.restarted){
+        /*if(this.restarted){
           this.newtime = time;
           this.restarted = false;
         }
 
         this.gameRuntime = (time - this.newtime) * 0.001; 
         this.playingTime = Math.round(this.gameRuntime);
-        this.timeText.setText("Time: " + this.playingTime);
+        this.timeText.setText("Time: " + this.playingTime);*/
     }
 
     //Si algún player muere, se para la musica y se llama a la escena de gameOver
     gameOver() {
-        this.music.stop();
+        /*this.music.stop();
         this.scene.stop();
         this.registry.destroy();
         this.events.off();
 
         let GameOver = this.scene.get('gameOver');
 
-        GameOver.scene.restart();
+        GameOver.scene.restart();*/
 
         
         // let GameWin = this.scene.get('gameWin');
@@ -119,7 +135,7 @@ export default class Mapa extends Phaser.Scene {
 
     //Si algún player gana, se para la musica y se llama a la escena de gameWin
     gameWin() {
-        this.r = this.scoreDial.getScore() - this.maxDialVal; //score de enemigos matados - score de enemigos total del nivel
+        /*this.r = this.scoreDial.getScore() - this.maxDialVal; //score de enemigos matados - score de enemigos total del nivel
         if(this.r == 0){
         this.r = this.maxDialVal;
         }
@@ -140,8 +156,8 @@ export default class Mapa extends Phaser.Scene {
         let GameWin = this.scene.get('gameWin');
 
         //configura la moral en la escena de gameWin
-        GameWin.moralitySet(this.scoreDial.getScore(), this.maxDialVal, this.gameScore /*aqui va la variable puntuación */);
+        GameWin.moralitySet(this.scoreDial.getScore(), this.maxDialVal, this.gameScore /*aqui va la variable puntuación );
 
-        GameWin.scene.restart();
+        GameWin.scene.restart();*/
     }
 }

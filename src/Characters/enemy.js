@@ -9,11 +9,23 @@ export default class Enemigo extends Phaser.GameObjects.Sprite {
      * @param {number} tam tamaño del sprite
     */
 
-    constructor(scene, x, y, tam, imgName) {
-        super(scene, x, y, imgName);
-        this.scene.add.existing(this);
-        this.initialize(tam)
+    constructor(scene, x, y, img, direccion) {
+        super(scene, x, y, img);
+        
         this.hp = 1;
-  
+        this.speed = 20;
+
+        this.scene.add.existing(this);
+        this.scene.physics.add.existing(this);
+        // Queremos que el jugador no se salga de los límites del mundo
+        this.body.setCollideWorldBounds();
+
+        const direction = {
+            Derecha: 0, 
+            Arriba: 1,
+            Izquierda: 2,
+            Abajo: 3
+        }
+        this.direccion = direccion;
     }
 }

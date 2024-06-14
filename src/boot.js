@@ -30,6 +30,7 @@ export default class Boot extends Phaser.Scene {
         this.load.image('Player2', 'assets/Sprites/player/Player2.png');
     
         //Carga de enemigos
+        this.load.image('pooka_idle', 'assets/Sprites/enemies/pooka_idle.png');
         this.load.spritesheet('Pooka_movRight', 'assets/Sprites/enemies/pooka_fila1.png', {frameWidth: 16, frameHeight: 16});
         this.load.spritesheet('Pooka_movLeft', 'assets/Sprites/enemies/pooka_fila2.png', {frameWidth: 16, frameHeight: 16});
         this.load.spritesheet('Pooka_eyes', 'assets/Sprites/enemies/pooka_ojos.png', {frameWidth: 16, frameHeight: 16});
@@ -42,6 +43,7 @@ export default class Boot extends Phaser.Scene {
         this.load.image('Pooka_explode_right', 'assets/Sprites/enemies/pooka_estallado_derecha.png');
         this.load.image('Pooka_explode_left', 'assets/Sprites/enemies/pooka_estallado_izquierda.png');
     
+        this.load.image('fygar_idle', 'assets/Sprites/enemies/fygar_idle.png');
         this.load.spritesheet('Fygar_movAndsmashed_right', 'assets/Sprites/enemies/fygar_fila1.png', {frameWidth: 16, frameHeight: 16});
         this.load.spritesheet('Fygar_movAndsmashed_left', 'assets/Sprites/enemies/fygar_fila2.png', {frameWidth: 16, frameHeight: 16});
         this.load.spritesheet('Fygar_eyes', 'assets/Sprites/enemies/fygar_ojos.png', {frameWidth: 16, frameHeight: 16});

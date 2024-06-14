@@ -9,18 +9,19 @@ export default class Player extends Phaser.GameObjects.Sprite {
      * @param {number} x Coordenada X
      * @param {number} y Coordenada Y
      */
-    constructor(scene, x, y, id, mirandoDrcha) {
-        super(scene, x, y, 'player_idle');
+    constructor(scene, x, y, img, id, keys, direccion) {
+        super(scene, x, y, img);
         
         this.score = 0;
         this.maxLifes = 3;
         this.lifes = this.maxLifes;
-        this.originalSpeed = 200;
+        this.originalSpeed = 20;
         this.speed = this.originalSpeed;
-
+        this.keys = keys;
+       // this.keys = this.scene.input.keyboard.addKeys('T');
         //Asginamos teclas en funcion del jugador que sea
-        if(this.id == "P1") this.keys = this.scene.input.keyboard.addKeys('W,S,A,D,SPACE,T');
-        else if(this.id == "P2") this.keys = this.scene.input.keyboard.addKeys('W,S,A,D,SPACE,T');
+       // if(this.id == "P1") this.keys = this.scene.input.keyboard.addKeys('W,S,A,D,SPACE');
+       // else if(this.id == "P2") this.keys = this.scene.input.keyboard.addKeys('UP,LEFT,DOWN,RIGHT,M');
 
         //Estados del player
         const estados = {
@@ -38,11 +39,10 @@ export default class Player extends Phaser.GameObjects.Sprite {
             Izquierda: 2,
             Abajo: 3
         }
-        if(mirandoDrcha) this.direccion = 0;
-        else this.direccion = 2;
+        this.direccion = direccion;
 
         this.scene.add.existing(this);
-        this.physics.add.existing(this);
+        this.scene.physics.add.existing(this);
         // Queremos que el jugador no se salga de los límites del mundo
         this.body.setCollideWorldBounds();
         
@@ -67,10 +67,8 @@ export default class Player extends Phaser.GameObjects.Sprite {
         this.muerto = false;
 
         //this.body.setSize(60, 40);
-        this.mirandoDrcha = mirandoDrcha;
-        //this.facingRight=true;
 
-        //Creacion de animaciones
+        //CREACIÓN DE ANIMACIONES
         //Movimiento
         this.scene.anims.create({
             key: 'player_mov_right',
@@ -98,11 +96,33 @@ export default class Player extends Phaser.GameObjects.Sprite {
         })
 
         this.scene.anims.create({
-            key: 'player_idle',
+            key: 'player_idle_right',
             frames: scene.anims.generateFrameNumbers('DigDug_mov', { start: 1, end: 1 }),
             frameRate: 6,
             repeat: -1
         })
+
+        this.scene.anims.create({
+            key: 'player_idle_up',
+            frames: scene.anims.generateFrameNumbers('DigDug_mov', { start: 3, end: 3 }),
+            frameRate: 6,
+            repeat: -1
+        })
+
+        this.scene.anims.create({
+            key: 'player_idle_left',
+            frames: scene.anims.generateFrameNumbers('DigDug_mov', { start: 5, end: 5 }),
+            frameRate: 6,
+            repeat: -1
+        })
+
+        this.scene.anims.create({
+            key: 'player_idle_down',
+            frames: scene.anims.generateFrameNumbers('DigDug_mov', { start: 7, end: 7 }),
+            frameRate: 6,
+            repeat: -1
+        })
+
 
         //Cavar
         this.scene.anims.create({
@@ -235,8 +255,8 @@ export default class Player extends Phaser.GameObjects.Sprite {
         });
 
         //Animación inicio
-        this.play('player_idle');
-
+        if(this.direccion == 0) this.play('player_idle_right');
+        else if(this.direccion == 2) this.play('player_idle_left');
     }
 
     //MÉTODOS
@@ -292,20 +312,34 @@ export default class Player extends Phaser.GameObjects.Sprite {
     //Controlador de animaciones
     setMovAnim(){
         if(this.parado){
-            this.play('player_idle')
+            switch(this.direccion){
+                case 0: 
+                this.play('player_idle_right');
+                break;
+                case 1: 
+                this.play('player_idle_up');
+                break;
+                case 2:
+                this.play('player_idle_left');
+                break;
+                case 3:
+                this.play('player_idle_down');
+                break;
+            }
+            
         }
         else{
-            switch(direction){
+            switch(this.direction){
                 case 0: 
                 this.play('player_mov_right');
                 break;
-                case 0: 
+                case 1: 
                 this.play('player_mov_up');
                 break;
-                case 0: 
+                case 2:
                 this.play('player_mov_left');
                 break;
-                case 0: 
+                case 3: 
                 this.play('player_mov_down');
                 break;
             }
@@ -318,13 +352,13 @@ export default class Player extends Phaser.GameObjects.Sprite {
             case 0: 
             this.play('player_throwing_pump_right');
             break;
-            case 0: 
+            case 1: 
             this.play('player_throwing_pump_up');
             break;
-            case 0: 
+            case 2: 
             this.play('player_throwing_pump_left');
             break;
-            case 0: 
+            case 3: 
             this.play('player_throwing_pump_down');
             break;
         }
@@ -336,13 +370,13 @@ export default class Player extends Phaser.GameObjects.Sprite {
             case 0: 
             this.play('player_inflate_right');
             break;
-            case 0: 
+            case 1: 
             this.play('player_inflate_up');
             break;
-            case 0: 
+            case 2: 
             this.play('player_inflate_left');
             break;
-            case 0: 
+            case 3: 
             this.play('player_inflate_down');
             break;
         }
@@ -354,13 +388,13 @@ export default class Player extends Phaser.GameObjects.Sprite {
             case 0: 
             this.play('player_digging_right');
             break;
-            case 0: 
+            case 1: 
             this.play('player_digging_up');
             break;
-            case 0: 
+            case 2: 
             this.play('player_digging_left');
             break;
-            case 0: 
+            case 3: 
             this.play('player_digging_down');
             break;
         }
@@ -372,13 +406,13 @@ export default class Player extends Phaser.GameObjects.Sprite {
             case 0: 
             this.play('player_smashed_right');
             break;
-            case 0: 
+            case 1: 
             this.play('player_smashed_up');
             break;
-            case 0: 
+            case 2: 
             this.play('player_smashed_left');
             break;
-            case 0: 
+            case 3: 
             this.play('player_smashed_down');
             break;
         }
@@ -390,13 +424,13 @@ export default class Player extends Phaser.GameObjects.Sprite {
             case 0: 
             this.play('player_dead_right');
             break;
-            case 0: 
+            case 1: 
             this.play('player_dead_up');
             break;
-            case 0: 
+            case 2: 
             this.play('player_dead_left');
             break;
-            case 0: 
+            case 3: 
             this.play('player_dead_down');
             break;
         }
@@ -405,7 +439,20 @@ export default class Player extends Phaser.GameObjects.Sprite {
 
     isgood(){
         this.damaged=false;
-        this.play('player_idle');
+        switch(this.direccion){
+            case 0: 
+            this.play('player_idle_right');
+            break;
+            case 1: 
+            this.play('player_idle_up');
+            break;
+            case 2:
+            this.play('player_idle_left');
+            break;
+            case 3: 
+            this.play('player_idle_down');
+            break;
+        }
     }
 
     timedmg(){
@@ -434,7 +481,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
         //MENU DE PAUSA
         if (Phaser.Input.Keyboard.JustDown(this.keys.T)) {
             //make a pause menu
-            this.scene.scene.launch('pauseMenu');
+            //this.scene.scene.launch('pauseMenu');
             this.scene.scene.pause();
         }
 
@@ -445,18 +492,18 @@ export default class Player extends Phaser.GameObjects.Sprite {
             if(Phaser.Input.Keyboard.JustDown(this.keys.SPACE)){
                 this.inflador = new Pump(this.scene, this.x, this.y, this.direccion);
             
-                //MIRAR
+                /*//MIRAR
                 this.available=false;
                 this.able();
 
                 //SONIDO
-                this.shot.play();
+                this.shot.play();*/
             }
 
             //MOVIMIENTO
             else if (this.keys.D.isDown) {
                 this.direccion = 0;
-                this.body.setVelocityY(this.speed);
+                this.body.setVelocityX(this.speed);
     
                 //Reanudar musica juego
                 //this.jump.play();
@@ -464,7 +511,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
             }
             else if (this.keys.W.isDown) {
                 this.direccion = 1;
-                this.body.setVelocityY(this.speed);
+                this.body.setVelocityY(-this.speed);
     
                 //Reanudar musica juego
                 //this.jump.play();
@@ -480,7 +527,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
             }
             else if (this.keys.S.isDown) {
                 this.direccion = 3;
-                this.body.setVelocityX(-this.speed);
+                this.body.setVelocityY(this.speed);
     
                 //Reanudar musica juego
                 //this.jump.play();
@@ -500,18 +547,18 @@ export default class Player extends Phaser.GameObjects.Sprite {
             if(Phaser.Input.Keyboard.JustDown(this.keys.M)){
                 this.inflador = new Pump(this.scene, this.x, this.y, this.direccion);
             
-                //MIRAR
+                /*//MIRAR
                 this.available=false;
                 this.able();
 
                 //SONIDO
-                this.shot.play();
+                this.shot.play();*/
             }
 
             //MOVIMIENTO
             if (this.keys.RIGHT.isDown) {
                 this.direccion = 0;
-                this.body.setVelocityY(this.speed);
+                this.body.setVelocityX(this.speed);
     
                 //Reanudar musica juego
                 //this.jump.play();
@@ -519,7 +566,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
             }
             else if (this.keys.UP.isDown) {
                 this.direccion = 1;
-                this.body.setVelocityY(this.speed);
+                this.body.setVelocityY(-this.speed);
     
                 //Reanudar musica juego
                 //this.jump.play();
@@ -535,7 +582,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
             }
             else if (this.keys.DOWN.isDown) {
                 this.direccion = 3;
-                this.body.setVelocityX(-this.speed);
+                this.body.setVelocityY(this.speed);
     
                 //Reanudar musica juego
                 //this.jump.play();

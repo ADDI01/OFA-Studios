@@ -9,10 +9,10 @@ export default class Fygar extends Enemy {
      * @param {number} tam tamaño del sprite
     */
 
-    constructor(scene, x, y, tam, imgName) {
-        super(scene, x, y, imgName);
+    constructor(scene, x, y) {
+        super(scene, x, y, 'fygar_idle');
         this.scene.add.existing(this);
-        this.initialize(tam)
+        //this.initialize(tam)
         this.hp = 1;
   
     }
