@@ -241,51 +241,59 @@ export default class Boot extends Phaser.Scene {
             key: 'player_smashed_right',
             frames: this.anims.generateFrameNumbers('DigDug_smashed', {start: 0, end: 1}),
             frameRate: 12,
-            repeat: -1
+            duration: 2,
+            repeat: 0
         });
         this.anims.create({
             key: 'player_smashed_up',
             frames: this.anims.generateFrameNumbers('DigDug_smashed', {start: 2, end: 3}),
             frameRate: 12,
-            repeat: -1
+            duration: 2,
+            repeat: 0
         });
         this.anims.create({
             key: 'player_smashed_left',
             frames: this.anims.generateFrameNumbers('DigDug_smashed', {start: 4, end: 5}),
             frameRate: 12,
-            repeat: -1
+            duration: 2,
+            repeat: 0
         });
         this.anims.create({
             key: 'player_smashed_down',
             frames: this.anims.generateFrameNumbers('DigDug_smashed', {start: 6, end: 7}),
             frameRate: 12,
-            repeat: -1
+            duration: 2,
+            repeat: 0
         });
         
         //Muerte
         this.anims.create({
             key: 'player_dead_right',
             frames: this.anims.generateFrameNumbers('DigDug_dead', {start: 0, end: 1}),
-            frameRate: 12,
-            repeat: -1
+            frameRate: 24,
+            duration: 2,
+            repeat: 0
         });
         this.anims.create({
             key: 'player_dead_up',
             frames: this.anims.generateFrameNumbers('DigDug_dead', {start: 2, end: 3}),
             frameRate: 12,
-            repeat: -1
+            duration: 2,
+            repeat: 0
         });
         this.anims.create({
             key: 'player_dead_left',
             frames: this.anims.generateFrameNumbers('DigDug_dead', {start: 4, end: 5}),
             frameRate: 12,
-            repeat: -1
+            duration: 2,
+            repeat: 0
         });
         this.anims.create({
             key: 'player_dead_down',
             frames: this.anims.generateFrameNumbers('DigDug_dead', {start: 6, end: 7}),
             frameRate: 12,
-            repeat: -1
+            duration: 2,
+            repeat: 0
         });
 
         //FYGAR
@@ -386,13 +394,15 @@ export default class Boot extends Phaser.Scene {
             key: 'fygar_smashed_right',
             frames: this.anims.generateFrameNumbers('Fygar_movAndsmashed_right', { start: 2, end: 2 }),
             frameRate: 12,
-            repeat: -1
+            duration: 2,
+            repeat: 0
         })
         this.anims.create({
             key: 'fygar_smashed_left',
             frames: this.anims.generateFrameNumbers('Fygar_movAndsmashed_left', { start: 2, end: 2 }),
             frameRate: 12,
-            repeat: -1
+            duration: 2,
+            repeat: 0
         })
 
         //POOKA
@@ -435,13 +445,15 @@ export default class Boot extends Phaser.Scene {
             key: 'pooka_smashed_right',
             frames: this.anims.generateFrameNumbers('Pooka_movRight', { start: 2, end: 2 }),
             frameRate: 6,
-            repeat: -1
+            duration: 2,
+            repeat: 0
         })
         this.anims.create({
             key: 'pooka_smashed_left',
             frames: this.anims.generateFrameNumbers('Pooka_movLeft', { start: 2, end: 2 }),
             frameRate: 6,
-            repeat: -1
+            duration: 2,
+            repeat: 0
         })
 
         //TERMINAR: hasta tener menu, llamo al mapa directamente

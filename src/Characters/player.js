@@ -77,7 +77,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
         this.lifes--;
 
         //Sonido de muerte (si hay)
-        this.death.play();
+        //this.death.play();
         //Actualizamos el HUD
         //this.healthBar.update(num);
 
@@ -234,7 +234,6 @@ export default class Player extends Phaser.GameObjects.Sprite {
     }
 
     setPlayerDiedAnim() {
-        this.dañado = true;
         switch(this.direccion){
             case 0: 
             this.play('player_dead_right');
@@ -281,7 +280,17 @@ export default class Player extends Phaser.GameObjects.Sprite {
     placeInOriginPosition(){
         this.x = this.originX;
         this.y = this.originY;
-        this.play(this.originalFrame);
+        this.parado = true;
+    }
+
+    onPlayerDied(){
+        this.setPlayerDiedAnim();
+        this.setDañado(); //Inmovilizamos al player dañado
+        let deadTimer = this.scene.time.addEvent( { //Después del cd de muerte, le volvemos a dejar moverse
+            delay: 2000,
+            callback: this.placeInOriginPosition,
+            callbackScope: this 
+        });
     }
 
     //MOVER JUGADORE A PUNTO INICIAL CON ESTO
@@ -295,20 +304,21 @@ export default class Player extends Phaser.GameObjects.Sprite {
     preUpdate(t,dt) {
         super.preUpdate(t,dt);
 
+        if(this.dañado) return;
+
         if(this.slowedTime > 0 && this.isSlowed){
             this.slowedTime --;
         }
 
         this.scene.Enemigos.getChildren().forEach((enemigo) => {
             if(this.scene.physics.collide(this, enemigo)) {
-                this.setPlayerDiedAnim();
-                this.placeInOriginPosition();
-
-                let deadCD = this.scene.time.addEvent( {
+                this.onPlayerDied();
+                
+                let deadCD = this.scene.time.addEvent( { //Después del cd de muerte, le volvemos a dejar moverse
                     delay: 3000,
                     callback: this.setDañado,
                     callbackScope: this 
-            });
+                });
             }
         });
         
