@@ -17,7 +17,7 @@ export default class Enemigo extends Phaser.GameObjects.Sprite {
 
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
-        // Queremos que el jugador no se salga de los límites del mundo
+        // Queremos que la entidad no se salga de los límites del mundo
         this.body.setCollideWorldBounds();
 
         const direction = {

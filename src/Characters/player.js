@@ -9,15 +9,17 @@ export default class Player extends Phaser.GameObjects.Sprite {
      * @param {number} x Coordenada X
      * @param {number} y Coordenada Y
      */
-    constructor(scene, x, y, img, id, keys, direccion) {
+    constructor(scene, x, y, img) {
         super(scene, x, y, img);
         
+        this.originX = x;
+        this.originY = y;
+        this.originalFrame = img;
         this.score = 0;
         this.maxLifes = 3;
         this.lifes = this.maxLifes;
         this.originalSpeed = 30;
         this.speed = this.originalSpeed;
-        this.keys = keys;
        // this.keys = this.scene.input.keyboard.addKeys('T');
         //Asginamos teclas en funcion del jugador que sea
        // if(this.id == "P1") this.keys = this.scene.input.keyboard.addKeys('W,S,A,D,SPACE');
@@ -31,7 +33,6 @@ export default class Player extends Phaser.GameObjects.Sprite {
             Inflar: 3
         }
         this.state = 0; //Estado actual del player
-        this.id = id; //String que representa que jugador es { P1, P2 }
 
         const direction = {
             Derecha: 0, 
@@ -39,7 +40,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
             Izquierda: 2,
             Abajo: 3
         }
-        this.direccion = direccion;
+        this.direction;
 
         this.scene.add.existing(this);
         this.scene.physics.add.existing(this);
@@ -49,8 +50,8 @@ export default class Player extends Phaser.GameObjects.Sprite {
         this.slowedTime = 0;
         this.isSlowed = false;
         // Esta label es la UI en la que pondremos la puntuación del jugador
-        let posX = this.scene.cameras.main.centerX*0.1;
-        let posY = this.scene.cameras.main.height*0.1;
+        //let posX = this.scene.cameras.main.centerX*0.1;
+        //let posY = this.scene.cameras.main.height*0.1;
 
         //para controladores
         this.available=true;
@@ -67,10 +68,6 @@ export default class Player extends Phaser.GameObjects.Sprite {
         this.muerto = false;
 
         //this.body.setSize(60, 40);
-
-        //Animación inicio
-        if(this.direccion == 0) this.play('player_idle_right');
-        else if(this.direccion == 2) this.play('player_idle_left');
     }
 
     //MÉTODOS
@@ -79,17 +76,22 @@ export default class Player extends Phaser.GameObjects.Sprite {
     minusHealth() {
         this.lifes--;
 
+        //Sonido de muerte (si hay)
+        this.death.play();
         //Actualizamos el HUD
         //this.healthBar.update(num);
 
-        if(this.life == 0){
-            //Sonido de muerte (si hay)
-            this.death.play();
-            
+        if(this.lifes == 0){
             this.scene.gameOver();
         }
-        // console.log(this.healthBar.value);
-        // console.log(this.health);
+    }
+
+    setDañado(){
+        this.dañado = !this.dañado;
+    }
+
+    get getDañado(){
+        return this.dañado;
     }
 
     //Funciones de estado de animacion
@@ -121,7 +123,6 @@ export default class Player extends Phaser.GameObjects.Sprite {
         callbackScope: this,
         });
     }
-
 
     //Controlador de animaciones
     setMovAnim(){
@@ -162,7 +163,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
 
     setThrowPumpAnim(){
         this.lanzandoInflador = true;
-        switch(direccion){
+        switch(this.direccion){
             case 0: 
             this.play('player_throwing_pump_right');
             break;
@@ -180,7 +181,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
 
     setInflateAnim(){
         this.inflando = true;
-        switch(direccion){
+        switch(this.direccion){
             case 0: 
             this.play('player_inflate_right');
             break;
@@ -196,9 +197,9 @@ export default class Player extends Phaser.GameObjects.Sprite {
         }
     }
 
-    setInflateAnim(){
+    setDiggingAnim(){
         this.excavando = true;
-        switch(direccion){
+        switch(this.direccion){
             case 0: 
             this.play('player_digging_right');
             break;
@@ -216,7 +217,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
 
     setPlayerSmashedAnim(){
         this.aplastado = true;
-        switch(direccion){
+        switch(this.direccion){
             case 0: 
             this.play('player_smashed_right');
             break;
@@ -232,9 +233,9 @@ export default class Player extends Phaser.GameObjects.Sprite {
         }
     }
 
-    setPlayerDmgAnim() {
+    setPlayerDiedAnim() {
         this.dañado = true;
-        switch(direccion){
+        switch(this.direccion){
             case 0: 
             this.play('player_dead_right');
             break;
@@ -252,7 +253,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
     }
 
     isgood(){
-        this.damaged=false;
+        this.dañado=false;
         switch(this.direccion){
             case 0: 
             this.play('player_idle_right');
@@ -277,6 +278,12 @@ export default class Player extends Phaser.GameObjects.Sprite {
         });
     }
 
+    placeInOriginPosition(){
+        this.x = this.originX;
+        this.y = this.originY;
+        this.play(this.originalFrame);
+    }
+
     //MOVER JUGADORE A PUNTO INICIAL CON ESTO
     //this.scene.physics.moveTo(this,this.x+150,this.y,500,200)
 
@@ -292,132 +299,24 @@ export default class Player extends Phaser.GameObjects.Sprite {
             this.slowedTime --;
         }
 
+        this.scene.Enemigos.getChildren().forEach((enemigo) => {
+            if(this.scene.physics.collide(this, enemigo)) {
+                this.setPlayerDiedAnim();
+                this.placeInOriginPosition();
+
+                let deadCD = this.scene.time.addEvent( {
+                    delay: 3000,
+                    callback: this.setDañado,
+                    callbackScope: this 
+            });
+            }
+        });
+        
         //MENU DE PAUSA
         if (Phaser.Input.Keyboard.JustDown(this.keys.T)) {
             //make a pause menu
             //this.scene.scene.launch('pauseMenu');
             this.scene.scene.pause();
-        }
-
-        //GESTIÓN DEL INPUT DE LOS JUGADORES
-        //PLAYER 1
-        if(this.id == "P1"){
-            //LANZAR INFLADOR
-            if(Phaser.Input.Keyboard.JustDown(this.keys.SPACE)){
-                this.inflador = new Pump(this.scene, this.x, this.y, this.direccion);
-            
-                /*//MIRAR
-                this.available=false;
-                this.able();
-
-                //SONIDO
-                this.shot.play();*/
-            }
-
-            //MOVIMIENTO
-            else if (this.keys.D.isDown) {
-                this.direccion = 0;
-                this.parado = false;
-                if(!this.dañado) this.setMovAnim();
-                this.body.setVelocityX(this.speed);
-    
-                //Reanudar musica juego
-                //this.jump.play();
-            }
-            else if (this.keys.W.isDown) {
-                this.direccion = 1;
-                this.parado = false;
-                if(!this.dañado) this.setMovAnim();
-                this.body.setVelocityY(-this.speed);
-    
-                //Reanudar musica juego
-                //this.jump.play();
-            }
-            else if (this.keys.A.isDown) {
-                this.direccion = 2;
-                this.parado = false;
-                if(!this.dañado) this.setMovAnim();
-                this.body.setVelocityX(-this.speed);
-    
-                //Reanudar musica juego
-                //this.jump.play();
-            }
-            else if (this.keys.S.isDown) {
-                this.direccion = 3;
-                this.parado = false;
-                if(!this.dañado) this.setMovAnim();
-                this.body.setVelocityY(this.speed);
-    
-                //Reanudar musica juego
-                //this.jump.play();
-            }
-            else {
-                if(!this.parado && !this.dañado){
-                    this.parado = true;
-                    this.setMovAnim();
-                }
-                this.body.setVelocityX(0);
-                this.body.setVelocityY(0);
-            }
-        }
-        else if(this.id == "P2"){
-            //LANZAR INFLADOR
-            if(Phaser.Input.Keyboard.JustDown(this.keys.M)){
-                this.inflador = new Pump(this.scene, this.x, this.y, this.direccion);
-            
-                /*//MIRAR
-                this.available=false;
-                this.able();
-
-                //SONIDO
-                this.shot.play();*/
-            }
-
-            //MOVIMIENTO
-            if (this.keys.RIGHT.isDown) {
-                this.direccion = 0;
-                this.parado = false;
-                if(!this.dañado) this.setMovAnim();
-                this.body.setVelocityX(this.speed);
-    
-                //Reanudar musica juego
-                //this.jump.play();
-            }
-            else if (this.keys.UP.isDown) {
-                this.direccion = 1;
-                this.parado = false;
-                if(!this.dañado) this.setMovAnim();
-                this.body.setVelocityY(-this.speed);
-    
-                //Reanudar musica juego
-                //this.jump.play();
-            }
-            else if (this.keys.LEFT.isDown) {
-                this.direccion = 2;
-                this.parado = false;
-                if(!this.dañado) this.setMovAnim();
-                this.body.setVelocityX(-this.speed);
-    
-                //Reanudar musica juego
-                //this.jump.play();
-            }
-            else if (this.keys.DOWN.isDown) {
-                this.direccion = 3;
-                this.parado = false;
-                if(!this.dañado) this.setMovAnim();
-                this.body.setVelocityY(this.speed);
-    
-                //Reanudar musica juego
-                //this.jump.play();
-            }
-            else {
-                if(!this.parado && !this.dañado){
-                    this.parado = true;
-                    this.setMovAnim();
-                }
-                this.body.setVelocityX(0);
-                this.body.setVelocityY(0);
-            }
         }
 
         //MIRAR

@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "Sprites/map/maps/MapaJuego2.json",
+    "activeFile": "Sprites/map/maps/MapaJuego2..tmx",
     "expandedProjectPaths": [
         ".",
         "Sprites/map/maps",
@@ -330,7 +330,7 @@
             "selectedLayer": 0,
             "viewCenter": {
                 "x": 244.21052631578948,
-                "y": 137.4315789473684
+                "y": 41.09473684210526
             }
         },
         "Sprites/map/maps/MapaJuego2..tmx#cambio_capa": {
@@ -384,8 +384,8 @@
             "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 162.33333333333331,
-                "y": 194
+                "x": 161.66666666666666,
+                "y": 193.33333333333334
             }
         },
         "Sprites/map/maps/MapaJuego2.json#cambio_capa": {
@@ -475,12 +475,14 @@
     "map.tileWidth": 8,
     "map.width": 46,
     "openFiles": [
-        "Sprites/map/maps/MapaJuego2.json"
+        "Sprites/map/maps/MapaJuego2.json",
+        "Sprites/map/maps/MapaJuego2..tmx"
     ],
     "project": "Tiled.tiled-project",
     "property.type": "bool",
     "recentFiles": [
         "Sprites/map/maps/MapaJuego2.json",
+        "Sprites/map/maps/MapaJuego2..tmx",
         "Sprites/map/maps/MapaJuego.json"
     ],
     "tileset.embedInMap": true,

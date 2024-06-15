@@ -1,4 +1,5 @@
-import Player from './Characters/player.js';
+import Player1 from './Characters/player1.js';
+import Player2 from './Characters/player2.js';
 import Fygar from './Characters/fygar.js';
 import Pooka from './Characters/pooka.js';
 
@@ -13,6 +14,8 @@ export default class Mapa extends Phaser.Scene {
      */
     constructor() {
       super({ key: 'Mapa' });
+
+      this.p1, this.p2; //Jugadores
     }
   
     /**
@@ -43,22 +46,26 @@ export default class Mapa extends Phaser.Scene {
     
         //Creamos las layers
         this.MapaLayer = this.map.createLayer('Mapa2', [tilesetLayers, tilesetSkyGroundFirstlayer]);
+
+        const debugGraphics = this.add.graphics().setAlpha(0.75);
+        this.MapaLayer.renderDebug(debugGraphics, {
+            tileColor: null, // Color of non-colliding tiles
+            collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
+            faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
+        });
     
         this.TunnelLayer = this.map.createLayer('Tunel', 
             [tilesetTunnel1, tilesetTunnel2, tilesetTunnel3, tilesetTunnel4, tilesetTunnel5, tilesetTunnel6, tilesetTunnel7,
                 tilesetTunnel8, tilesetTunnelEmpty]);
     
         //Layer para cada player
-        this.Players = this.add.group();
         this.Player1Layer = this.map.getObjectLayer('Player1');
         this.Player1Layer.objects.forEach((objeto) => {
-            this.p1 = new Player(this, objeto.x, objeto.y, 'idle_p1', "P1", this.input.keyboard.addKeys('W,S,A,D,SPACE,T'), 0);
-            this.Players.add(this.p1);
+            this.p1 = new Player1(this, objeto.x, objeto.y, 'idle_p1', "P1");
         })
         this.Player2Layer = this.map.getObjectLayer('Player2');
         this.Player2Layer.objects.forEach((objeto) => {
-            this.p2 = new Player(this, objeto.x, objeto.y, 'idle_p2', "P2", this.input.keyboard.addKeys('UP,LEFT,DOWN,RIGHT,M,T'), 2);
-            this.Players.add(this.p2);
+            this.p2 = new Player2(this, objeto.x, objeto.y, 'idle_p2', "P2");
         })
 
         //Layers para enemigos
@@ -95,7 +102,9 @@ export default class Mapa extends Phaser.Scene {
     
         //TODO: hacer los groups y darles la colision contra el mapa
         this.physics.add.collider(this.Enemigos, this.MapaLayer);
-        this.physics.add.collider(this.Players, this.MapaLayer);
+        this.physics.add.collider(this.p1, this.MapaLayer);
+        this.physics.add.collider(this.p2, this.MapaLayer);
+
         //this.physics.add.collider(Power-ups, mapa);
         //this.physics.add.collider(Obstacules, mapa);
     }

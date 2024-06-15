@@ -12,6 +12,8 @@ export default class Pooka extends Enemy {
     constructor(scene, x, y) {
         super(scene, x, y, 'pooka_idle');
 
+        this.body.setImmovable(true);
+
         //Estados del player
         const estados = {
             Normal: 0,
@@ -19,105 +21,6 @@ export default class Pooka extends Enemy {
             Huir: 2
         }
         this.state = 0; //Estado actual del player
-
-        //CREACIÓN DE ANIMACIONES
-        //Movimiento
-        this.scene.anims.create({
-            key: 'pooka_mov_right',
-            frames: scene.anims.generateFrameNumbers('Pooka_movRight', { start: 0, end: 1 }),
-            frameRate: 12,
-            repeat: -1
-        })
-        this.scene.anims.create({
-            key: 'pooka_mov_left',
-            frames: scene.anims.generateFrameNumbers('Pooka_movLeft', { start: 0, end: 1 }),
-            frameRate: 12,
-            repeat: -1
-        })
-        this.scene.anims.create({
-            key: 'pooka_idle_right',
-            frames: scene.anims.generateFrameNumbers('Pooka_movRight', { start: 0, end: 0 }),
-            frameRate: 6,
-            repeat: -1
-        })
-        this.scene.anims.create({
-            key: 'pooka_idle_left',
-            frames: scene.anims.generateFrameNumbers('Pooka_movLeft', { start: 0, end: 0 }),
-            frameRate: 6,
-            repeat: -1
-        })
-
-        //Persiguir
-        this.scene.anims.create({
-            key: 'pooka_hunting',
-            frames: scene.anims.generateFrameNumbers('Pooka_eyes', { start: 0, end: 1 }),
-            frameRate: 12,
-            repeat: -1
-        })
-
-        //Aplastado
-        this.scene.anims.create({
-            key: 'pooka_smashed_right',
-            frames: scene.anims.generateFrameNumbers('Pooka_movRight', { start: 2, end: 2 }),
-            frameRate: 6,
-            repeat: -1
-        })
-        this.scene.anims.create({
-            key: 'pooka_smashed_left',
-            frames: scene.anims.generateFrameNumbers('Pooka_movLeft', { start: 2, end: 2 }),
-            frameRate: 6,
-            repeat: -1
-        })
-
-        //Inflado
-        this.scene.anims.create({
-            key: 'pooka_inflated1_right',
-            frames: scene.anims.generateFrameNumbers('Pooka_inflated1Right', { frames: [0] }),
-            frameRate: 12,
-            repeat: -1
-        })
-        this.scene.anims.create({
-            key: 'pooka_inflated2_right',
-            frames: scene.anims.generateFrameNumbers('Pooka_inflated2Right', { frames: [0] }),
-            frameRate: 12,
-            repeat: -1
-        })
-        this.scene.anims.create({
-            key: 'pooka_inflated3_right',
-            frames: scene.anims.generateFrameNumbers('Pooka_inflated3Right', { frames: [0] }),
-            frameRate: 12,
-            repeat: -1
-        })
-        this.scene.anims.create({
-            key: 'pooka_explode_right',
-            frames: scene.anims.generateFrameNumbers('Pooka_explode_right', { frames: [0] }),
-            frameRate: 12,
-            repeat: -1
-        })
-        this.scene.anims.create({
-            key: 'pooka_inflated1_left',
-            frames: scene.anims.generateFrameNumbers('Pooka_inflated1Left', { frames: [0] }),
-            frameRate: 12,
-            repeat: -1
-        })
-        this.scene.anims.create({
-            key: 'pooka_inflated2_left',
-            frames: scene.anims.generateFrameNumbers('Pooka_inflated2Left', { frames: [0] }),
-            frameRate: 12,
-            repeat: -1
-        })
-        this.scene.anims.create({
-            key: 'pooka_inflated3_left',
-            frames: scene.anims.generateFrameNumbers('Pooka_inflated3Left', { frames: [0] }),
-            frameRate: 12,
-            repeat: -1
-        })
-        this.scene.anims.create({
-            key: 'pooka_explode_left',
-            frames: scene.anims.generateFrameNumbers('Pooka_explode_left', { frames: [0] }),
-            frameRate: 12,
-            repeat: -1
-        })
     }
 
     //MÉTODOS
@@ -133,11 +36,67 @@ export default class Pooka extends Enemy {
         }
     }
 
-
+    setFollowAnim(){
+        this.persiguiendo = true;
+        if(this.direccion == 0) this.play('fygar_hunting_right');
+        else this.play('fygar_hunting_left');
+    }
 
     setInflateAnim(){
         this.inflado = true;
         if(this.direccion == 0) this.play('pooka_inflate_right');
         else this.play('pooka_inflate_left');
+    }
+
+    setSmashedAnim(){
+        this.smashed = true;
+        if(this.direccion == 0) this.play('pooka_smashed_right');
+        else this.play('pooka_smashed_left');
+    }
+
+    changeDirection(){
+        if(this.direccion == 0) {
+            this.direccion = 1;
+            this.body.setVelocity(-this.speed);
+        }
+        else{
+            this.direccion = 0;
+            this.body.setVelocity(this.speed);
+        }
+    }
+
+    perseguirPlayer(){
+        this.persiguiendo = true;
+
+    }
+
+    /**
+     * @override
+     */
+    preUpdate(t,dt) {
+        super.preUpdate(t,dt);
+
+        if(!this.inflado) this.parado = false; //En continuo mov
+        
+        if(this.persiguiendo) {
+            this.aux = Math.integerInRange(1, 10);
+
+            if(this.aux <= 2) perseguirPlayer();
+            else moverse();
+        }
+        else {
+            if(this.scene.physics.collide(this.scene.MapaLayer, this)) {
+                changeDirection();
+            } 
+        }
+
+        if(this.scene.physics.collide(this.scene.p1, this)) {
+            this.scene.p1.minusHealth();
+            
+        }
+
+        if(this.scene.physics.collide(this.scene.p2, this)) {
+            this.scene.p1.minusHealth();
+        }
     }
 }
